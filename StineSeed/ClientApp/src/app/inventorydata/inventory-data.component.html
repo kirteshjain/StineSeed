@@ -1,0 +1,31 @@
+
+<div *ngIf="!inventoryRequests">
+  <em>Loading...</em>
+</div>
+<div *ngIf="inventoryRequests.inventory">
+  <div id="tableLabel">Inventory Details</div>
+  <table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>InventoryId</th>
+        <th>Name</th>
+        <th>Kernels</th>
+        <th>Requested Kernels</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inventory of inventoryRequestDetail">
+
+        <td>{{ inventory.id }}</td>
+        <td>{{ inventory.inventoryId }}</td>
+        <td>{{ inventory.name }}</td>
+        <td>{{ inventory.kernels }}</td>
+        <td>{{ inventory.requestedKernels }}</td>
+        <td *ngIf="inventory.requestedKernels > inventory.kernels">Not enough Kernels</td>
+        <td *ngIf="inventory.requestedKernels < inventory.kernels">Enough Kernels</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
